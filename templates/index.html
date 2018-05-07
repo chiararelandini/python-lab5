@@ -21,12 +21,17 @@
 
     <p>Here you can see all existing tasks</p>
 
+    <table>
     <ul>
     {% for task in tasks %}
-        <li>{{ task[1] }}</li>
+        <tr>
+        <th><li>{{ task[1] }}</li></th>
+        <th><a href="{{ url_for('delete_task',id_task = task[0]) }}">Delete</a></th>
+        </tr>
     {% endfor %}
 
     </ul>
+    </table>
 
     <form action="{{ url_for('create_task')}}" method="post">
     <p>Insert a new Task:

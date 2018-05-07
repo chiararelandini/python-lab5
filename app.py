@@ -18,9 +18,16 @@ def index():
 @app.route('/create_task', methods=['POST'])
 def create_task():
     task = request.form['task']
-    print("creo")
     bot.saveTask(task)
     return render_template("create_task.html")
+
+
+@app.route('/delete_task/<id_task>')
+def delete_task(id_task):
+    tasks = bot.readTasks()
+    bot.removeTask(id_task)
+    task = [task for task in tasks if task[0] == id_task]
+    return render_template("delete_task.html", task=task)
 
 
 if __name__ == '__main__':
