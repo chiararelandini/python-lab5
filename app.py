@@ -25,9 +25,12 @@ def create_task():
 @app.route('/delete_task/<id_task>')
 def delete_task(id_task):
     tasks = bot.readTasks()
+    task_deleted = [task for task in tasks if task[0] == id_task]
+    # print(task_deleted)
+    # deleted = task_deleted[1]
     bot.removeTask(id_task)
-    task = [task for task in tasks if task[0] == id_task]
-    return render_template("delete_task.html", task=task)
+    # return render_template("delete_task.html", task=deleted)
+    return render_template("index.html", tasks=bot.readTasks())
 
 
 if __name__ == '__main__':

@@ -21,13 +21,9 @@
 
     <p>Here you can see all existing tasks</p>
 
-    <table>
     <ul>
     {% for task in tasks %}
-        <tr>
-        <th><li>{{ task[1] }}</li></th>
-        <th><a href="{{ url_for('delete_task',id_task = task[0]) }}">Delete</a></th>
-        </tr>
+        <li>{{ task[1] }}<a href="{{ url_for('delete_task',id_task = task[0]) }}"> Delete</a></li>
     {% endfor %}
 
     </ul>
